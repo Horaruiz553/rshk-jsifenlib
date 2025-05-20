@@ -13,7 +13,7 @@ import java.time.LocalDate;
 
 public class TgTimb extends SifenObjectBase {
     private TTiDE iTiDE;        // este campo engloba a iTiDE y a dDesTiDE
-    private int dNumTim;        // número de timbrado
+    private String dNumTim;        // número de timbrado
     private String dEst;        // código de establecimiento: patron ej: 001
     private String dPunExp;     // punto de expedición: patron ej: 001
     private String dNumDoc;     // número de documento: patron ej: 0192312
@@ -24,7 +24,7 @@ public class TgTimb extends SifenObjectBase {
         SOAPElement gTimb = DE.addChildElement("gTimb");
         gTimb.addChildElement("iTiDE").setTextContent(String.valueOf(this.iTiDE.getVal()));
         gTimb.addChildElement("dDesTiDE").setTextContent(this.iTiDE.getDescripcion());
-        gTimb.addChildElement("dNumTim").setTextContent("0"+String.valueOf(this.dNumTim));
+        gTimb.addChildElement("dNumTim").setTextContent(this.dNumTim);
         gTimb.addChildElement("dEst").setTextContent(this.dEst);
         gTimb.addChildElement("dPunExp").setTextContent(this.dPunExp);
         gTimb.addChildElement("dNumDoc").setTextContent(this.dNumDoc);
@@ -40,7 +40,7 @@ public class TgTimb extends SifenObjectBase {
                 this.iTiDE = TTiDE.getByVal(Short.parseShort(ResponseUtil.getTextValue(value)));
                 break;
             case "dNumTim":
-                this.dNumTim = Integer.parseInt(ResponseUtil.getTextValue(value));
+                this.dNumTim = (ResponseUtil.getTextValue(value));
                 break;
             case "dEst":
                 this.dEst = ResponseUtil.getTextValue(value);
@@ -68,11 +68,11 @@ public class TgTimb extends SifenObjectBase {
         this.iTiDE = iTiDE;
     }
 
-    public int getdNumTim() {
+    public String getdNumTim() {
         return dNumTim;
     }
 
-    public void setdNumTim(int dNumTim) {
+    public void setdNumTim(String dNumTim) {
         this.dNumTim = dNumTim;
     }
 

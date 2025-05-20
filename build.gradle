@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.github.horaruiz553.sifen'
-version = '0.2.4-fork'
+version = '0.2.6-fork'
 
 java {
     toolchain {
